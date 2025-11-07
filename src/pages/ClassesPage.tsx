@@ -8,7 +8,7 @@ interface Course {
 
 interface Class {
   id: number;
-  name: string;
+  room: string;
   courseId: number;
   courseName?: string;
 }
@@ -54,7 +54,7 @@ const ClassesPage: React.FC = () => {
       <ul>
         {classes.map(c => (
           <li key={c.id}>
-            {c.name} ({c.courseName || `Curso ID: ${c.courseId}`})
+            {c.room} ({c.courseName || `Curso ID: ${c.courseId}`})
             <button className="edit" onClick={() => setEditingClass(c)}>Editar</button>
             <button className="delete" onClick={() => handleDelete(c.id)}>Excluir</button>
           </li>

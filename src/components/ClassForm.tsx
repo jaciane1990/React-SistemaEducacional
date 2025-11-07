@@ -3,12 +3,12 @@ import axios from "axios";
 
 interface Course {
   id: number;
-  name: string;
+  title: string;
 }
 
 interface Class {
   id?: number;
-  name: string;
+  room: string;
   courseId: number;
 }
 
@@ -24,7 +24,7 @@ const ClassForm: React.FC<Props> = ({ editingClass, courses, onSaved }) => {
 
   useEffect(() => {
     if (editingClass) {
-      setName(editingClass.name);
+      setName(editingClass.room);
       setCourseId(editingClass.courseId);
     } else {
       setName("");
@@ -58,7 +58,7 @@ const ClassForm: React.FC<Props> = ({ editingClass, courses, onSaved }) => {
       />
       <select value={courseId} onChange={(e) => setCourseId(Number(e.target.value))}>
         {courses.map(c => (
-          <option key={c.id} value={c.id}>{c.name}</option>
+          <option key={c.id} value={c.id}>{c.title}</option>
         ))}
       </select>
       <button className="edit" type="submit">
