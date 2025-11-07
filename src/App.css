@@ -1,10 +1,3 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -40,3 +33,168 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Reset básico */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #c6ccd2;
+  margin: 0;
+  padding: 2rem;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container {
+  background: #fff;
+  max-width: 700px;
+  width: 100%;
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Navegação */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #555;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: #2c7a7b;
+  background-color: #e6fffa;
+  box-shadow: 0 2px 6px rgba(44,122,123,0.3);
+}
+
+/* Título */
+h1, h2 {
+  text-align: center;
+  color: #2c7a7b;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+/* Formulário de novo curso */
+form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+form input[type="text"] {
+  flex-grow: 1;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #cbd5e0;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus {
+  border-color: #2c7a7b;
+  outline: none;
+}
+
+form button {
+  background-color: #2c7a7b;
+  color: #fff;
+  border: none;
+  padding: 0 1.25rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #285e5f;
+}
+
+/* Lista de cursos */
+ul.course-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.course-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e6fffa;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(44, 122, 123, 0.15);
+  transition: box-shadow 0.3s ease;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+ul.course-list li:hover {
+  box-shadow: 0 6px 20px rgba(44, 122, 123, 0.3);
+}
+
+/* Botões de ação */
+button.edit,
+button.delete {
+  border: none;
+  padding: 0.4rem 0.8rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 0.7rem;
+}
+
+button.edit {
+  background-color: #38a169; /* verde */
+  color: white;
+}
+
+button.edit:hover {
+  background-color: #2f855a;
+}
+
+button.delete {
+  background-color: #e53e3e; /* vermelho */
+  color: white;
+}
+
+button.delete:hover {
+  background-color: #9b2c2c;
+}
+
+/* Campo para editar inline (quando for editar curso) */
+li input[type="text"] {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  border: 2px solid #2a6db5;
+  margin-right: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+li input[type="text"]:focus {
+  border-color: #2c7a7b;
+  outline: none;
+}
+
