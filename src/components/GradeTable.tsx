@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
+interface GradeTableProps {
+  classId: number;
+}
 
 interface Student {
   id: number;
   name: string;
-  grade?: { prova?: number; trabalho?: number };
+  grade: number;
 }
 
-interface Props {
-  classId: number;
-}
-
-const GradeTable: React.FC<Props> = ({ classId }) => {
+const GradeTable: React.FC<GradeTableProps> = ({ classId }) => {
   const [students, setStudents] = useState<Student[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Aqui você poderia substituir por fetch real
     const fetchStudents = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get(`/students?classId=${classId}`);
-        setStudents(data);
-      } catch (err) {
-        console.error("Erro ao buscar estudantes:", err);
-        alert("Erro ao carregar estudantes!");
+        // Simulação de fetch
+        await new Promise((res) => setTimeout(res, 500));
+        const fakeData: Student[] = [
+          { id: 1, name: "João Silva", grade: 8.5 },
+          { id: 2, name: "Maria Souza", grade: 9.2 },
+          { id: 3, name: "Carlos Pereira", grade: 7.8 },
+        ];
+        setStudents(fakeData);
       } finally {
         setLoading(false);
       }
@@ -31,56 +34,28 @@ const GradeTable: React.FC<Props> = ({ classId }) => {
     fetchStudents();
   }, [classId]);
 
-  const handleChange = (id: number, field: "prova" | "trabalho", value: number) => {
-    setStudents(students.map(s => s.id === id ? {
-      ...s,
-      grade: { ...s.grade, [field]: value }
-    } : s));
-  };
-
-  const handleSave = async (student: Student) => {
-    try {
-      await axios.put(`/grades/${student.id}`, student.grade);
-      alert("Notas salvas!");
-    } catch (err) {
-      console.error("Erro ao salvar notas:", err);
-      alert("Erro ao salvar notas!");
-    }
-  };
-
-  if (loading) return <p>Carregando estudantes...</p>;
+  if (loading) return <p>Carregando notas...</p>;
+  if (students.length === 0) return <p>Nenhum aluno encontrado nesta turma.</p>;
 
   return (
-    <table>
+    <table
+      style={{
+        width: "100%",
+        borderCollapse: "collapse",
+        boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+      }}
+    >
       <thead>
-        <tr>
-          <th>Estudante</th>
-          <th>Prova</th>
-          <th>Trabalho</th>
-          <th>Ações</th>
+        <tr style={{ backgroundColor: "#2196F3", color: "#fff" }}>
+          <th style={{ padding: "10px", textAlign: "left" }}>Aluno</th>
+          <th style={{ padding: "10px", textAlign: "center" }}>Nota</th>
         </tr>
       </thead>
       <tbody>
-        {students.map(s => (
-          <tr key={s.id}>
-            <td>{s.name}</td>
-            <td>
-              <input
-                type="number"
-                value={s.grade?.prova ?? 0}
-                onChange={(e) => handleChange(s.id, "prova", Number(e.target.value))}
-              />
-            </td>
-            <td>
-              <input
-                type="number"
-                value={s.grade?.trabalho ?? 0}
-                onChange={(e) => handleChange(s.id, "trabalho", Number(e.target.value))}
-              />
-            </td>
-            <td>
-              <button className="edit" onClick={() => handleSave(s)}>Salvar</button>
-            </td>
+        {students.map((s) => (
+          <tr key={s.id} style={{ borderBottom: "1px solid #eee" }}>
+            <td style={{ padding: "10px" }}>{s.name}</td>
+            <td style={{ padding: "10px", textAlign: "center" }}>{s.grade}</td>
           </tr>
         ))}
       </tbody>

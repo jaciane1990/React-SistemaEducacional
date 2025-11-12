@@ -1,200 +1,334 @@
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+/* src/App.css */
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-/* Reset básico */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #c6ccd2;
+/* ===== Reset e base ===== */
+* {
   margin: 0;
-  padding: 2rem;
-  color: #333;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background-color: #f0f2f5;
+  color: #2c3e50;
+  line-height: 1.6;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  padding: 0; /* Remove padding do body para header full width */
 }
 
-.container {
-  background: #fff;
-  max-width: 700px;
-  width: 100%;
-  padding: 2rem 2.5rem;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+/* Container que aplica o padding interno (substitui o padding do body) */
+.content-container {
+    padding: 30px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Navegação */
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  font-weight: 600;
-  font-size: 1rem;
+/* ===== LAYOUT PRINCIPAL (HEADER E NAV) ===== */
+header.main-header {
+    background-color: #2c3e50; /* Cor escura para contraste */
+    color: #ecf0f1;
+    padding: 15px 40px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px; 
 }
 
-nav a {
-  text-decoration: none;
-  color: #555;
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+header.main-header h1 {
+    color: #ecf0f1; 
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
-nav a:hover,
-nav a.active {
-  color: #2c7a7b;
-  background-color: #e6fffa;
-  box-shadow: 0 2px 6px rgba(44,122,123,0.3);
+nav.main-nav a {
+    color: #ecf0f1; 
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 25px;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
-/* Título */
-h1, h2 {
-  text-align: center;
-  color: #2c7a7b;
-  margin-bottom: 1.5rem;
+nav.main-nav a:hover, nav.main-nav a.active {
+    color: #a2c8e3; 
+    border-bottom: 2px solid #2980b9; 
+}
+
+
+/* ===== Cabeçalhos (o resto do seu CSS) ===== */
+h1, h2, h3 {
+  color: #1a2533;
+  margin-bottom: 20px;
   font-weight: 700;
 }
 
-/* Formulário de novo curso */
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+/* ===== Links ===== */
+a {
+  color: #2980b9;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #1c5980;
+  text-decoration: underline;
+}
+
+/* ===== Formulários ===== */
 form {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  justify-content: center;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(44, 62, 80, 0.1);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-form input[type="text"] {
-  flex-grow: 1;
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  border: 2px solid #cbd5e0;
+form input, form select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1.5px solid #d1d9e6;
   border-radius: 8px;
-  transition: border-color 0.3s ease;
+  font-size: 1rem;
+  color: #34495e;
+  outline-offset: 2px;
+  outline-color: transparent;
+  transition: border-color 0.3s ease, outline-color 0.3s ease;
 }
 
-form input[type="text"]:focus {
-  border-color: #2c7a7b;
-  outline: none;
+form input:focus, form select:focus {
+  border-color: #2980b9;
+  outline-color: #2980b9;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.4);
 }
 
 form button {
-  background-color: #2c7a7b;
+  background-color: #2980b9;
   color: #fff;
+  padding: 12px 25px;
+  font-weight: 700;
+  font-size: 1rem;
   border: none;
-  padding: 0 1.25rem;
-  font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 form button:hover {
-  background-color: #285e5f;
+  background-color: #1c5980;
+  box-shadow: 0 8px 20px rgba(28, 89, 128, 0.5);
 }
 
-/* Lista de cursos */
-ul.course-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+form button.edit {
+  background-color: #27ae60;
+  box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
 }
 
-ul.course-list li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #e6fffa;
-  padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
+form button.edit:hover {
+  background-color: #1f8447;
+  box-shadow: 0 8px 20px rgba(31, 132, 71, 0.5);
+}
+
+form button.delete {
+  background-color: #e74c3c;
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+}
+
+form button.delete:hover {
+  background-color: #b73529;
+  box-shadow: 0 8px 20px rgba(183, 53, 41, 0.5);
+}
+
+/* ===== Grid de cards (Students) ===== */
+.students-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto 50px;
+}
+
+.student-card {
+  background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(44, 122, 123, 0.15);
-  transition: box-shadow 0.3s ease;
-  font-weight: 600;
-  font-size: 1.1rem;
+  padding: 25px 20px;
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
 }
 
-ul.course-list li:hover {
-  box-shadow: 0 6px 20px rgba(44, 122, 123, 0.3);
+.student-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(41, 128, 185, 0.25);
 }
 
-/* Botões de ação */
-button.edit,
-button.delete {
+.student-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.student-card p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #5d6d7e;
+  line-height: 1.4;
+}
+
+/* ===== Botões dentro dos cards ===== */
+.card-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.card-buttons button {
+  padding: 8px 14px;
+  border-radius: 8px;
   border: none;
-  padding: 0.4rem 0.8rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-left: 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-button.edit {
-  background-color: #38a169; /* verde */
-  color: white;
+.card-buttons button.edit {
+  background-color: #27ae60;
+  color: #fff;
 }
 
-button.edit:hover {
-  background-color: #2f855a;
+.card-buttons button.edit:hover {
+  background-color: #1f8447;
+  box-shadow: 0 6px 20px rgba(31, 132, 71, 0.4);
 }
 
-button.delete {
-  background-color: #e53e3e; /* vermelho */
-  color: white;
+.card-buttons button.delete {
+  background-color: #e74c3c;
+  color: #fff;
 }
 
-button.delete:hover {
-  background-color: #9b2c2c;
+.card-buttons button.delete:hover {
+  background-color: #b73529;
+  box-shadow: 0 6px 20px rgba(183, 53, 41, 0.4);
 }
 
-/* Campo para editar inline (quando for editar curso) */
-li input[type="text"] {
-  flex-grow: 1;
-  font-size: 1.1rem;
-  padding: 0.4rem 0.8rem;
+/* ===== Listas simples (Courses, Classes) ===== */
+ul {
+  list-style: none;
+  max-width: 700px;
+  margin: 30px auto 0;
+  padding: 0 10px;
+}
+
+ul li {
+  background-color: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 14px rgba(44, 62, 80, 0.07);
+  transition: box-shadow 0.3s ease;
+  cursor: default;
+}
+
+ul li:hover {
+  box-shadow: 0 8px 25px rgba(41, 128, 185, 0.15);
+}
+
+ul li button {
+  margin-left: 8px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
   border-radius: 8px;
-  border: 2px solid #2a6db5;
-  margin-right: 1rem;
-  transition: border-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-li input[type="text"]:focus {
-  border-color: #2c7a7b;
-  outline: none;
+ul li button.edit {
+  background-color: #27ae60;
+  color: #fff;
 }
 
+ul li button.edit:hover {
+  background-color: #1f8447;
+  box-shadow: 0 6px 20px rgba(31, 132, 71, 0.4);
+}
+
+ul li button.delete {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+ul li button.delete:hover {
+  background-color: #b73529;
+  box-shadow: 0 6px 20px rgba(183, 53, 41, 0.4);
+}
+
+/* ===== Botões globais ===== */
+button {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  filter: brightness(0.9);
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  .content-container {
+    padding: 20px;
+  }
+  header.main-header {
+    padding: 15px 20px;
+  }
+  nav.main-nav {
+    display: flex;
+    flex-direction: column;
+  }
+  nav.main-nav a {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+
+  form {
+    padding: 20px;
+  }
+
+  .students-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  ul {
+    padding: 0 5px;
+  }
+}
